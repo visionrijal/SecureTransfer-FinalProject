@@ -1,3 +1,4 @@
+
 package com.securetransferfrontend.controller;
 
 import com.securetransferfrontend.SecureTransferApp;
@@ -111,7 +112,14 @@ public class MainController {
 
     @FXML
     private void showTransferHistory() {
-        // TODO: Implement showTransferHistory logic
+        try {
+            javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader(getClass().getResource("/fxml/history-view.fxml"));
+            javafx.scene.Node historyNode = loader.load();
+            contentArea.getChildren().setAll(historyNode);
+        } catch (Exception e) {
+            ToastUtil.showToast(root, "Failed to load History view: " + e.getMessage(), false);
+            e.printStackTrace();
+        }
     }
 
     @FXML

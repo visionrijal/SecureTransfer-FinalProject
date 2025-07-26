@@ -19,10 +19,7 @@
             <HBox alignment="CENTER_LEFT" spacing="16">
                 <Button text="Send Files" onAction="#showSendFiles" styleClass="nav-link"/>
                 <Button text="Receive Files" onAction="#showReceiveFiles" styleClass="nav-link"/>
-                <Button text="USB Wizard" onAction="#showUSBWizard" styleClass="nav-link"/>
-                <Button text="Transfer History" onAction="#showTransferHistory" styleClass="nav-link"/>
-                <Button text="Features" onAction="#scrollToFeatures" styleClass="nav-link"/>
-                <Button text="Security" onAction="#scrollToSecurity" styleClass="nav-link"/>
+                <Button text="History" onAction="#showTransferHistory" styleClass="nav-link"/>
             </HBox>
             <Region HBox.hgrow="ALWAYS"/>
             <HBox alignment="CENTER_RIGHT" spacing="12">
@@ -94,19 +91,12 @@
                                                 <Text text="Optimized for speed and reliability" styleClass="feature-desc"/>
                                             </VBox>
                                         </HBox>
-                                        
-                                        <HBox styleClass="feature-item" alignment="CENTER_LEFT" spacing="16">
-                                            <SVGPath styleClass="feature-icon" content="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M11,16.5L6.5,12L7.91,10.59L11,13.67L16.59,8.09L18,9.5L11,16.5Z"/>
-                                            <VBox spacing="4">
-                                                <Text text="USB Wizard" styleClass="feature-title"/>
-                                                <Text text="Easy USB device management" styleClass="feature-desc"/>
-                                            </VBox>
-                                        </HBox>
+                                
                                         
                                         <HBox styleClass="feature-item" alignment="CENTER_LEFT" spacing="16">
                                             <SVGPath styleClass="feature-icon" content="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z"/>
                                             <VBox spacing="4">
-                                                <Text text="Transfer History" styleClass="feature-title"/>
+                                                <Text text="Notification" styleClass="feature-title"/>
                                                 <Text text="Track and manage all transfers" styleClass="feature-desc"/>
                                             </VBox>
                                         </HBox>

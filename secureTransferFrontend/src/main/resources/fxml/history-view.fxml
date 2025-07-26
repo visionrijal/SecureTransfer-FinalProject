@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.securetransferfrontend.controller.HistoryController" spacing="16" alignment="TOP_CENTER" styleClass="history-view-root">
+    <Label text="Notification History" styleClass="history-title"/>
+    <TableView fx:id="notificationTable" prefHeight="400" prefWidth="600">
+        <columns>
+            <TableColumn fx:id="idColumn" text="ID" prefWidth="60" />
+            <TableColumn fx:id="messageColumn" text="Message" prefWidth="300" />
+            <TableColumn fx:id="createdAtColumn" text="Created At" prefWidth="180" />
+            <TableColumn fx:id="readColumn" text="Read" prefWidth="60" />
+        </columns>
+    </TableView>
+</VBox>
