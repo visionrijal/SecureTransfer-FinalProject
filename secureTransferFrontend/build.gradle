@@ -1,0 +1,39 @@
+plugins {
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
+}
+
+group = 'com.securetransfer'
+version = '1.0.0'
+
+sourceCompatibility = '17'
+targetCompatibility = '17'
+
+mainClassName = 'com.securetransferfrontend.SecureTransferApp'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.openjfx:javafx-controls:17.0.10'
+    implementation 'org.openjfx:javafx-fxml:17.0.10'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.17.1'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.17.1'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.17.1'
+    implementation 'org.apache.httpcomponents.client5:httpclient5:5.3.1'
+    implementation 'org.apache.httpcomponents.core5:httpcore5:5.2.1'
+
+    // Logging
+    implementation 'org.slf4j:slf4j-api:2.0.12'
+    implementation 'ch.qos.logback:logback-classic:1.4.14'
+}
+
+javafx {
+    version = "17.0.10"
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
+
+application {
+    mainClass = mainClassName
+}

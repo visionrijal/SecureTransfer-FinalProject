@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2em; }
+        h1 { color: #2c3e50; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 2em; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background: #f4f4f4; }
+        .section { margin-bottom: 2em; }
+        .delete-btn { color: #c0392b; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Admin Dashboard</h1>
+    <div class="section">
+        <h2>Users</h2>
+        <table>
+            <tr><th>Username</th><th>Actions</th></tr>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.username}"></td>
+                <td><a th:href="@{'/api/admin/user/' + ${user.username}}" class="delete-btn">Delete</a></td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(users)}">
+                <td colspan="2">No users found.</td>
+            </tr>
+        </table>
+    </div>
+    <div class="section">
+        <h2>Sessions</h2>
+        <table>
+            <tr><th>Code</th><th>Sender</th><th>Receiver</th><th>Status</th><th>Actions</th></tr>
+            <tr th:each="transferSession : ${transferSessions}">
+                <td th:text="${transferSession.code}"></td>
+                <td th:text="${transferSession.senderUsername}"></td>
+                <td th:text="${transferSession.receiverUsername}"></td>
+                <td th:text="${transferSession.status}"></td>
+                <td><a th:href="@{'/api/admin/session/' + ${transferSession.code}}" class="delete-btn">Delete</a></td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(transferSessions)}">
+                <td colspan="5">No sessions found.</td>
+            </tr>
+        </table>
+    </div>
+    <div class="section">
+        <h2>Audit Logs</h2>
+        <table>
+            <tr><th>User</th><th>Session</th><th>Action</th><th>File ID</th><th>Message</th><th>Timestamp</th></tr>
+            <tr th:each="log : ${auditlogs}">
+                <td th:text="${log.username}"></td>
+                <td th:text="${log.sessionCode}"></td>
+                <td th:text="${log.action}"></td>
+                <td th:text="${log.fileId}"></td>
+                <td th:text="${log.details}"></td>
+                <td th:text="${log.timestamp}"></td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(auditlogs)}">
+                <td colspan="6">No audit logs found.</td>
+            </tr>
+        </table>
+    </div>
+    <div class="section">
+        <h2>Notifications</h2>
+        <table>
+            <tr><th>User</th><th>Message</th><th>Read</th><th>Created At</th></tr>
+            <tr th:each="note : ${notifications}">
+                <td th:text="${note.username}"></td>
+                <td th:text="${note.message}"></td>
+                <td th:text="${note.read}"></td>
+                <td th:text="${note.createdAt}"></td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(notifications)}">
+                <td colspan="4">No notifications found.</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

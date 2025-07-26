@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.SVGPath?>
+
+<ScrollPane fx:controller="com.securetransferfrontend.controller.SendFilesController"
+            fitToWidth="true" styleClass="send-files-scroll"
+            xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+  <content>
+    <VBox styleClass="send-files-content"
+          stylesheets="@../styles/send-files.css,@../styles/toast-notification.css">
+      <VBox styleClass="file-selection-section" alignment="CENTER">
+        <VBox fx:id="fileDropZone" styleClass="file-drop-zone" alignment="CENTER" 
+              onDragOver="#handleDragOver" 
+              onDragDropped="#handleDragDropped"
+              onDragExited="#handleDragExited">
+          <SVGPath content="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z" styleClass="upload-icon"/>
+          <VBox alignment="CENTER" spacing="3">
+            <Text text="Drop files here or click to browse" styleClass="drop-zone-text"/>
+            <Text text="All file types supported" styleClass="drop-zone-subtext"/>
+          </VBox>
+          <Button fx:id="selectFilesBtn" text="Choose Files" onAction="#selectFiles" styleClass="select-files-btn"/>
+        </VBox>
+        <VBox fx:id="selectedFilesContainer" styleClass="selected-files-container" visible="false" managed="false">
+          <Label fx:id="sessionCodeLabel" text="" styleClass="session-code-label" />
+          <HBox alignment="CENTER_LEFT" spacing="8">
+            <Text text="Selected Files" styleClass="section-title"/>
+            <Text fx:id="fileCountText" text="(0/10)" styleClass="file-count"/>
+          </HBox>
+          <VBox fx:id="selectedFilesList" styleClass="files-list selected-files-list"/>
+          <HBox styleClass="file-summary" alignment="CENTER_RIGHT">
+            <VBox alignment="CENTER_RIGHT" spacing="2">
+              <Text fx:id="totalSizeText" text="Total: 0 B" styleClass="total-size"/>
+              <Text text="Maximum: 500 MB" styleClass="size-limit"/>
+            </VBox>
+            <Button fx:id="clearAllBtn" text="Clear All" onAction="#clearAllFiles" styleClass="clear-btn"/>
+          </HBox>
+          <VBox styleClass="transfer-options" alignment="CENTER">
+            <Text text="Choose Transfer Method" styleClass="section-title"/>
+            <HBox styleClass="transfer-methods" alignment="CENTER">
+              <Button fx:id="transferFilesBtn" text="Transfer Files" onAction="#startTransferFiles" styleClass="transfer-btn"/>
+            </HBox>
+          </VBox>
+        </VBox>
+      </VBox>
+    </VBox>
+  </content>
+</ScrollPane>

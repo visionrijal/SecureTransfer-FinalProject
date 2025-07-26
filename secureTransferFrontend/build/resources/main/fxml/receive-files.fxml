@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.SVGPath?>
+
+<ScrollPane fx:controller="com.securetransferfrontend.controller.ReceiveFilesController"
+            fitToWidth="true" styleClass="receive-files-scroll"
+            xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+  <content>
+    <VBox styleClass="receive-files-content"
+          stylesheets="@../styles/receive-files.css,@../styles/toast-notification.css">
+      
+      
+      <!-- Main Content -->
+      <VBox styleClass="main-content" spacing="32">
+        
+        <!-- Code Entry Section -->
+        <VBox fx:id="connectionStatusBox" styleClass="code-entry-section" alignment="CENTER">
+          <Text text="Enter Transfer Code" styleClass="section-title"/>
+          <Text text="Ask the sender for their 6-digit transfer code" styleClass="section-subtitle"/>
+          
+          <HBox styleClass="code-input-container" alignment="CENTER" spacing="16">
+            <TextField fx:id="codeTextField" promptText="Enter 6-digit code" styleClass="code-input"/>
+            <Button fx:id="connectButton" text="Connect" onAction="#handleConnectButton" styleClass="connect-btn"/>
+          </HBox>
+          
+          <Text text="The code is valid for 30 minutes" styleClass="code-note"/>
+        </VBox>
+        
+        
+        <!-- Add this section for the code popup (example, adjust as needed) -->
+        <VBox fx:id="codePopup" styleClass="code-popup" alignment="CENTER" spacing="16" visible="false" managed="false">
+            <SVGPath content="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2z" styleClass="code-lock-icon" />
+            <Text fx:id="transferCodeText" text="123456" styleClass="transfer-code-text" />
+            <Button fx:id="cancelCodePopupBtn" text="Cancel" onAction="#handleCancelCodePopup" styleClass="dialog-button cancel" />
+        </VBox>
+        
+        <!-- Received Files Section -->
+        <VBox styleClass="received-files-section">
+          <HBox alignment="CENTER_LEFT" spacing="16">
+            <Text text="Received Files" styleClass="section-title"/>
+            <Button fx:id="refreshButton" text="Refresh" onAction="#handleRefreshHistory" styleClass="refresh-btn"/>
+            <Button fx:id="saveAllButton" onAction="#handleSaveAllFiles" styleClass="save-all-btn" text="Save All Files" />
+          </HBox>
+          
+          <ListView fx:id="receivedFilesListView" styleClass="files-list" />
+          
+          <VBox fx:id="noFilesMessage" styleClass="no-files-message" alignment="CENTER" visible="true">
+            <SVGPath content="M20 6h-8l-2-2H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2z" styleClass="no-files-icon"/>
+            <Text text="No files received yet" styleClass="no-files-text"/>
+            <Text text="Enter a transfer code to receive files" styleClass="no-files-subtext"/>
+          </VBox>
+        </VBox>
+        
+      </VBox>
+      
+    </VBox>
+  </content>
+</ScrollPane> 
